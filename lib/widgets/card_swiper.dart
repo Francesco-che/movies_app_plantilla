@@ -30,5 +30,5 @@ class CardSwiper extends StatelessWidget {
             );
           },
         ));
-  }
+  } 
 }
