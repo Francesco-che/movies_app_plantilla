@@ -6,7 +6,7 @@ class CardSwiper extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Container(
+    return Container( 
         width: double.infinity,
         // Aquest multiplicador estableix el tant per cent de pantalla ocupada 50%
         height: size.height * 0.5,
