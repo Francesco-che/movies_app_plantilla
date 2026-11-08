@@ -1,38 +1,38 @@
 import 'package:movies_app/models/models.dart';
 
-class NowPlayinResponse {
+class NowPlayingResponse {
     Dates dates;
     int page;
-    List<Movie> Movies;
+    List<Movie> results;
     int totalPages;
-    int totalMovies;
+    int totalResults;
 
-    NowPlayinResponse({
+    NowPlayingResponse({
         required this.dates,
         required this.page,
-        required this.Movies,
+        required this.results,
         required this.totalPages,
-        required this.totalMovies,
+        required this.totalResults,
     });
 
-    factory NowPlayinResponse.fromJson(String str) => NowPlayinResponse.fromMap(json.decode(str));
+    factory NowPlayingResponse.fromJson(String str) => NowPlayingResponse.fromMap(json.decode(str));
 
     // String toJson() => json.encode(toMap());
 
-    factory NowPlayinResponse.fromMap(Map<String, dynamic> json) => NowPlayinResponse(
+    factory NowPlayingResponse.fromMap(Map<String, dynamic> json) => NowPlayingResponse(
         dates: Dates.fromMap(json["dates"]),
         page: json["page"],
-        Movies: List<Movie>.from(json["Movies"].map((x) => Movie.fromMap(x))),
+        results: List<Movie>.from(json["results"].map((x) => Movie.fromMap(x))),
         totalPages: json["total_pages"],
-        totalMovies: json["total_Movies"],
+        totalResults: json["total_results"],
     );
 
     // Map<String, dynamic> toMap() => {
     //     "dates": dates.toMap(),
     //     "page": page,
-    //     "Movies": List<dynamic>.from(Movies.map((x) => x.toMap())),
+    //     "results": List<dynamic>.from(results.map((x) => x.toMap())),
     //     "total_pages": totalPages,
-    //     "total_Movies": totalMovies,
+    //     "total_results": totalResults,
     // };
 }
 
