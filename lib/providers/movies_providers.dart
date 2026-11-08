@@ -28,9 +28,10 @@ class MoviesProvider extends ChangeNotifier {
 
     // Await the http get response, then decode the json-formatted response.
     final result = await http.get(url);
-    final now_playing_response = NowPlayingResponse.fromJson(convert.jsonDecode(result.body));
+    final nowPlayingResponse = NowPlayingResponse.fromJson(result.body);
 
-    onDisplayMovies = now_playing_response.results;
+    onDisplayMovies = nowPlayingResponse.results;
+    notifyListeners();
   }
   
 }
