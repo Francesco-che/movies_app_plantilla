@@ -13,6 +13,8 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> onDisplayMovies = [];
   List<Movie> popularMovies = [];
 
+  Map<int, List<Cast>> casting = {};
+
   MoviesProvider() {
     print('MoviesProvider inicializado');
     this.getOnDisplayMovies();
@@ -42,5 +44,17 @@ class MoviesProvider extends ChangeNotifier {
     popularMovies = [...popularMovies, ...popularResponse.results];
 
     notifyListeners();
+  }
+
+  Future <List<Cast>> getMoviesCast(int idMovie) async {
+    print('demanam info al servidor!');
+    var url = Uri.https(_baseUrl, '3/movie/$idMovie/credits',
+        {'api_key': _apiKey, 'language': _language});
+
+    final result = await http.get(url);
+    final creditsResponse = CreditsResponse.fromJson(result.body);
+
+    casting[idMovie] = creditsResponse.cast;
+    return creditsResponse.cast;
   }
 }
