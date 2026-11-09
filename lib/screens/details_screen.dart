@@ -5,7 +5,6 @@ import 'package:movies_app/widgets/widgets.dart';
 class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: Canviar després per una instància de Peli
     final Movie peli = ModalRoute.of(context)?.settings.arguments as Movie;
 
     return Scaffold(
